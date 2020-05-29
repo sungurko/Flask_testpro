@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+Список студентов
+
+{% endblock %}
+
+{% block content_title %}
+
+<table class="table-inverse">
+	
+<a class="btn btn-success" href="{{ url_for('students.add_student') }}">Добавить запись</a>
+	<th class ="text-right">
+</th>
+</table>
+
+{% endblock %}
+
+
+{% block content %}
+
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<th scope="col">Имя</th>
+			<th scope="col">E-Mail</th>
+			<th scope="col">Телефон</th>
+			<th scope="col">Дата зачисления</th>
+			<td></td>
+		</tr>
+	</thead>
+	<tbody>
+	{% for student in students %}
+		<tr>
+			<td>{{ student.name }}</td>
+			<td>{{ student.email }}</td>
+			<td>{{ student.phone }}</td>
+			<td>{{ student.year }}</td>
+			<td class="text-right">
+
+			<a class="btn btn-danger" href="{{ url_for('students.delete_student', student_id=student.id) }}">Удалить</a>
+
+			</td>
+		</tr>
+	{% endfor %}
+
+	
+
+	</tbody>
+</table>
+
+{% endblock %}
