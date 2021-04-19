@@ -3,11 +3,12 @@ from src.model import db
 from src.student import student
 from src.model.student import Student
 from src.student.forms import StudentForm
-
+from flask_login import login_required
 
 
 
 @student.route('/student') # индексная страница http://localhost/student
+@login_required
 def index():
 	students=Student.query.all()	
 	return render_template('student/index.html', students=students)

@@ -1,7 +1,12 @@
+import os
+
+token = os.environ['FLASK_TOKEN']
+
+
 class Config():
 	DEBUG=True
 	SQLALCHEMY_TRACK_MODIFICATIONS=False
-	SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://kuperae:#@localhost/users'
+	SQLALCHEMY_DATABASE_URI = f'postgresql+psycopg2://kuperae:{token}@localhost/users'
 	SECRET_KEY='secret'
 	WTF_CSRF_ENABLED = False
 

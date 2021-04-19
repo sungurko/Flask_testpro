@@ -1,6 +1,6 @@
 from flask import render_template, url_for, redirect, request, session, flash
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import login_user, current_user, logout_user
+from flask_login import login_user, current_user, logout_user, login_required
 
 from src import login_manager
 
@@ -46,10 +46,19 @@ def login():
 
 
 
+
+@auth.route("/account")
+@login_required
+def account():
+    return render_template('auth/account.html', title='Account')
+
+
 @auth.route('/logout')
 def logout():
 	logout_user()
 	return redirect(url_for('auth.login'))
+
+
 
 
 
