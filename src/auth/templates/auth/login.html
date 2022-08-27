@@ -32,9 +32,10 @@
         <div class="flash {{cat}}">{{msg}}</div>
             {% endfor %}</p>
 
-        <p>{{ form.submit() }}</p>
-    </form>
+        <p>{{ form.submit() }}  <a href="{{url_for('auth.reset_pass')}}">Забыл пароль</a>
+        </p>
 
+    </form>
 
     {{ username }}
     

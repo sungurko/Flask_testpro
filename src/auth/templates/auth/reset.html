@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}
+Авторизация
+{% endblock %}
+
+{% block content_title %}
+Вход в систему
+{% endblock %}
+
+{% block content %}
+
+    <form action="" method="POST" autocomplete="off">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+
+            {{ form.email.label(class="form-control-label")}}<br>
+            {% if form.email.errors %}
+                {{ form.email(class="form-control form-control-lg is-invalid")}}
+                {% for error in form.email.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                <span>{{ eror }}</span>
+                {% endfor %}
+            <p>
+                {% else %}
+                {{form.email(class="form-control form-control-lg")}}
+                {% endif %}
+            </p>
+        </div>
+        <p>
+            {{ form.submit(class="btn btn-primary") }}
+        </p>
+
+    </form>   
+
+
+{% endblock %}
+

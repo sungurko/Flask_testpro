@@ -27,4 +27,8 @@ class RegisterForm(FlaskForm):
 		if user is not None:
 			raise ValidationError('Email занят')
 
+class ResetForm(FlaskForm):
+	email = StringField(label = 'Введите ваш Email', validators=[DataRequired()], render_kw={'placeholder': 'Email'})
+	submit = SubmitField(label = 'Сброс пароля', validators=[DataRequired()])
+
 

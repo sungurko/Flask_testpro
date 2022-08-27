@@ -1,6 +1,8 @@
 from . import db
+from src.config import Config
 from src.auth import login_manager
 from flask_security import UserMixin, RoleMixin # добавляется несколько методов
+from itsdangerous import JSONWebSignatureSerializer as Serializer
 
 
 @login_manager.user_loader

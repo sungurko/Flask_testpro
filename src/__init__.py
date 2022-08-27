@@ -1,24 +1,20 @@
 from flask import Flask
 from src.config import Config
 from src.admin.admin import admin
-#from flask_login import LoginManager
-from src.auth import login_manager
-
+from src.auth import login_manager, mail
+import src.model.users
 
 
 def create_app(config_class=Config):
     app = Flask(__name__)
-
     app.config.from_object(Config())
-
-    import src.model
-    import src.model.users
 
     # инициализация расширений
 
     model.db.init_app(app)
     admin.init_app(app)
     login_manager.init_app(app)
+    mail.init_app(app)
     
     # blueprints
 
@@ -27,11 +23,12 @@ def create_app(config_class=Config):
     from src.student.view import student
     from src.errors.handlers import errors
 
-    app.register_blueprint(auth)       
+    # регистрация модулей в приложении
+
+    app.register_blueprint(auth) 
     app.register_blueprint(home)
     app.register_blueprint(student)
-    app.register_blueprint(errors)
-   
+    app.register_blueprint(errors)   
         
     
     with app.app_context():
@@ -40,6 +37,8 @@ def create_app(config_class=Config):
     return app
 
 app = create_app()
+
+
     
 
 
