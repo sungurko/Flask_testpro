@@ -80,10 +80,10 @@ def reset_pass():
 
 @auth.route('/reset/<token>', methods=['GET', 'POST'])
 def reset_token(token):
-	user = User.verify_token()
+	user = User.verify_token(token)
 	if user is None:
 		flash('Токен просрочен или недействителен', 'warning')
-		return redirect(url_for('reset_pass'))
+		return redirect(url_for('auth.reset_pass'))
 	form.ResetPasswordForm()
 	if form.validate_on_submit():
 		hash_pass = generate_password_hash(form.password.data)
