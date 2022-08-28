@@ -31,4 +31,10 @@ class ResetForm(FlaskForm):
 	email = StringField(label = 'Введите ваш Email', validators=[DataRequired()], render_kw={'placeholder': 'Email'})
 	submit = SubmitField(label = 'Сброс пароля', validators=[DataRequired()])
 
+class ResetPasswordForm(FlaskForm):
+	password = PasswordField('Пароль', validators=[DataRequired()], render_kw={'placeholder': 'Пароль'})
+	confirm_pass = PasswordField('Повтор пароля', validators=[DataRequired(), EqualTo('password', 'Пароли несовместимы')], render_kw={'placeholder': u'Подтвердите пароль'})
+	submit = SubmitField('Изменить пароль')
+
+
 

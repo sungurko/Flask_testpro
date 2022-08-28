@@ -8,7 +8,7 @@ from flask_mail import Message
 from src.model import db
 from src.auth import auth, mail
 from src.model.users import User, Role
-from src.auth.forms import LoginForm, RegisterForm, ResetForm
+from src.auth.forms import LoginForm, RegisterForm, ResetForm, ResetPasswordForm
 
 
 
@@ -51,13 +51,13 @@ def account():
     return render_template('auth/account.html', title='Account')
 
 
-def send_email():
-    msg = Message('Flask app test send message',
-    	sender='flaskappsmail@gmail.com',
-    	recipients=['sungurko@mail.ru'])
-    msg.html = '<h1>Это письмо тест отправки</h1>'
-    mail.send(msg)
-    return 'Письмо отправлено....'
+def send_email(user):
+	token = user.generate_token()
+	msg = Message('Password reset request', recipients = [user.email], sender='flaskappsmail@gmail.com')
+	msg.body = f''' Если вы не запрашивали это письмо, просто проигнорируйте
+	{url_for('auth.reset_token', token = token, _external = True)}'''
+	mail.send(msg)
+	return 'Письмо отправлено....'
 
 
 @auth.route('/logout')
@@ -71,12 +71,27 @@ def reset_pass():
 	if form.validate_on_submit():
 		user = User.query.filter_by(email=form.email.data).first()
 		if user:
-			send_email()
+			send_email(user)
 			flash('Запрос на сброс пароля отправлен, проверьте почту')
 			return redirect(url_for('auth.login'))
 
 	return render_template('auth/reset.html', title = 'Reset', form=form)
 
+
+@auth.route('/reset/<token>', methods=['GET', 'POST'])
+def reset_token(token):
+	user = User.verify_token()
+	if user is None:
+		flash('Токен просрочен или недействителен', 'warning')
+		return redirect(url_for('reset_pass'))
+	form.ResetPasswordForm()
+	if form.validate_on_submit():
+		hash_pass = generate_password_hash(form.password.data)
+		user.password = hash_pass
+		db.session.commit()
+		flash(f'Пароль успешно изменен, авторизуйтесь !', category='success')
+		return redirect(url_for('auth.login'))
+	return render_template('auth/change_password.html', title = 'Change password', form=form)
 
 
 
