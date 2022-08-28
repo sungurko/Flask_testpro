@@ -6,14 +6,11 @@ from flask_security import UserMixin, RoleMixin # добавляется нес�
 from itsdangerous import JSONWebSignatureSerializer as Serializer
 from time import time
 import jwt
-import os
-
 
 
 @login_manager.user_loader
 def load_user(user_id):
 		return User.query.get(int(user_id))
-
 
 
 roles_users = db.Table('roles_users',
@@ -34,8 +31,6 @@ class User(db.Model, UserMixin):
 		return '<User {}, Email {} >'.format(self.username, self.email)
 		#return f"User('{self.username}', '{self.email}')"
 
-	#def get_token(self, expires = 300):
-		#return jwt.encode({'reset_password': self.username}, algorithm='HS256)
 	def generate_token(self):
 		return jwt.encode({'id': self.id}, current_app.config['SECRET_KEY'], algorithm='HS256')
 
