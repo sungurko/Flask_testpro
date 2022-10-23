@@ -89,7 +89,7 @@ def reset_token(token):
 		hash_pass = generate_password_hash(form.password.data)
 		user.password = hash_pass
 		db.session.commit()
-		flash(f'Пароль успешно изменен, авторизуйтесь !', category='success')
+		flash(f'Пароль успешно изменен, авторизуйтесь !!!!', category='success')
 		return redirect(url_for('auth.login'))
 	return render_template('auth/change_password.html', title = 'Change password', form=form)
 
