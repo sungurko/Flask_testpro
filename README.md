@@ -7,8 +7,8 @@ echo $TOKEN_ETP
 ```
 # Git clone the application
 
-```python
-   pip install -r requirement.txt
+```git
+   git clone git@github.com:sungurko/Flask_testpro.git
 ```
 ## Create a virtual environment inside the application 
 
