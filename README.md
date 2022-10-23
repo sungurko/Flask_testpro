@@ -12,7 +12,8 @@ echo $TOKEN_ETP
 ```
 ## Create a virtual environment inside the application 
 
-```python3 -m venv venv
+```
+python3 -m venv venv
    source venv/bin/activate
 ```
 ## Install Python modules
