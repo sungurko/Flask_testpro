@@ -8,7 +8,6 @@ export TOKEN_ETP='12345678'
 echo $TOKEN_ETP
 ```
 ## Git clone the application
-
 ```Clone git clone https://github.com/sungurovae/Flask_testpro.git
 ```
 ## Create a virtual environment inside the application 
