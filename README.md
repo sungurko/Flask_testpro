@@ -1,11 +1,11 @@
-# Flask_testpro
-# add environment variables
+## Flask_testpro
+## add environment variables
 ```
 nano ~/.bashrc
 export TOKEN_ETP='12345678'
 echo $TOKEN_ETP
 ```
-# Git clone the application
+## Git clone the application
 
 ```git
    git clone git@github.com:sungurko/Flask_testpro.git
@@ -24,4 +24,8 @@ echo $TOKEN_ETP
 
 ```python
    python run.py
+```
+## Docker commands
+```docker
+   docker ps
 ```
