@@ -7,8 +7,8 @@ echo $TOKEN_ETP
 ```
 ## Git clone the application
 
-```git
-   git clone git@github.com:sungurko/Flask_testpro.git
+```
+git clone git@github.com:sungurko/Flask_testpro.git
 ```
 ## Create a virtual environment inside the application 
 
@@ -19,7 +19,6 @@ source venv/bin/activate
 ## Install Python modules
 
 ```
-python
 pip install --upgrade pip
 pip install -r requirement.txt
 ```
