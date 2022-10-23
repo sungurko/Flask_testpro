@@ -1,5 +1,5 @@
 ## Flask_testpro
-## add environment variables
+## Add environment variables
 ```
 nano ~/.bashrc
 export TOKEN_ETP='12345678'
