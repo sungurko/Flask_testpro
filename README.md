@@ -1,17 +1,13 @@
-## Flask_testpro
-
-## add environment variables
-
+# Flask_testpro
+# add environment variables
 ```
 nano ~/.bashrc
 export TOKEN_ETP='12345678'
 echo $TOKEN_ETP
 ```
-## Git clone the application
-
+# Git clone the application
 ```git clone https://github.com/sungurovae/Flask_testpro.git
 ```
-
 ## Create a virtual environment inside the application 
 
 ```python3 -m venv venv
