@@ -15,12 +15,13 @@ echo $TOKEN_ETP
 ```
 python3 -m venv venv
 source venv/bin/activate
-pip install --upgrade pip
 ```
 ## Install Python modules
 
-```python
-   pip install -r requirement.txt
+```
+python
+pip install --upgrade pip
+pip install -r requirement.txt
 ```
 ## Run the application using
 
