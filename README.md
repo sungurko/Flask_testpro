@@ -6,7 +6,6 @@ export TOKEN_ETP='12345678'
 echo $TOKEN_ETP
 ```
 ## Git clone the application
-
 ```
 git clone git@github.com:sungurko/Flask_testpro.git
 ```
@@ -24,10 +23,10 @@ pip install -r requirement.txt
 ```
 ## Run the application using
 
-```python
-   python run.py
+```
+python run.py
 ```
 ## Docker commands
-```docker
-   docker ps
+```
+docker ps
 ```
