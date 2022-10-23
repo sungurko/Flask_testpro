@@ -15,6 +15,7 @@ echo $TOKEN_ETP
 ```
 python3 -m venv venv
 source venv/bin/activate
+pip install --upgrade pip
 ```
 ## Install Python modules
 
