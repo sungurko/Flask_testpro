@@ -8,7 +8,7 @@ export TOKEN_ETP='12345678'
 echo $TOKEN_ETP
 ```
 ## Git clone the application
-```Clone git clone https://github.com/sungurovae/Flask_testpro.git
+```git clone https://github.com/sungurovae/Flask_testpro.git
 ```
 ## Create a virtual environment inside the application 
 
@@ -25,8 +25,3 @@ echo $TOKEN_ETP
 ```python
    python run.py
 ```
-=======
-# nano ~/.bashrc
-# export TOKEN_ETP='12345678'
-# echo $TOKEN_ETP
->>>>>>> 33a89a12233c06b29663430cd637432d44739009
